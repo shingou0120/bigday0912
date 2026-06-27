@@ -1,0 +1,69 @@
+body {
+    background-color: #fcfbf7;
+}
+
+/* 頂級柔和陰影與卡片邊框 */
+.premium-shadow {
+    box-shadow: 0 10px 30px -10px rgba(141, 163, 153, 0.12),
+                0 2px 6px rgba(141, 163, 153, 0.03);
+}
+
+/* 微光卡片：溫柔極簡 */
+.soft-glimmer {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(212, 163, 115, 0.12);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8),
+                0 8px 24px -4px rgba(212, 163, 115, 0.08);
+}
+
+/* 沙漠金流光漸層 (流動微光) */
+.desert-gold-gradient {
+    background: linear-gradient(135deg, #a37142 0%, #d4a373 50%, #fcdfa8 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 5s ease infinite;
+}
+
+@keyframes goldShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.text-glow {
+    text-shadow: 0 1px 8px rgba(212, 163, 115, 0.1);
+}
+
+/* 磨砂玻璃質感導航 */
+.frosted-glass {
+    background: rgba(252, 251, 247, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(212, 163, 115, 0.08);
+}
+
+/* 解決 iOS 100vh 容器跑版 */
+.min-h-screen-safe {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+/* prefers-reduced-motion 支援：避免過度動畫 */
+@media (prefers-reduced-motion: reduce) {
+    .desert-gold-gradient { animation: none !important; background-size: auto !important; }
+    .animate-bounce { animation: none !important; }
+}
+
+/* 螢幕閱讀器專用隱藏文字 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border-width: 0;
+}
