@@ -1,11 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esther & Rena - Just in Love 婚禮邀請函</title>
-    
+
+    <!-- SEO & Social (Open Graph / Twitter) -->
+    <meta name="description" content="Esther & Rena 的婚禮邀請函 — Just in Love。婚禮時間、地點、交通與線上 RSVP。">
+    <meta property="og:title" content="Esther & Rena — Just in Love">
+    <meta property="og:description" content="誠摯邀請您出席我們的婚禮。日期：2026/09/12，地點：新天地梧棲創始店">
+    <!-- 如果你有邀請卡縮圖，請替換下面的 URL -->
+    <meta property="og:image" content="https://yourdomain.example.com/assets/og-invitation.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Preconnect / Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -36,29 +48,29 @@
             }
         }
     </script>
-    
-    <!-- Google Fonts: Dancing Script, Inter, Noto Serif TC -->
+
+    <!-- Google Fonts: Dancing Script, Inter, Noto Serif TC (修正為完整連結) -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+
     <style>
         body {
             background-color: #fcfbf7;
         }
-        
+
         /* 頂級柔和陰影與卡片邊框 */
         .premium-shadow {
-            box-shadow: 0 10px 30px -10px rgba(141, 163, 153, 0.12), 
+            box-shadow: 0 10px 30px -10px rgba(141, 163, 153, 0.12),
                         0 2px 6px rgba(141, 163, 153, 0.03);
         }
-        
+
         /* 微光卡片：溫柔極簡 */
         .soft-glimmer {
             background: rgba(255, 255, 255, 0.85);
             border: 1px solid rgba(212, 163, 115, 0.12);
-            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8),
                         0 8px 24px -4px rgba(212, 163, 115, 0.08);
         }
 
@@ -80,7 +92,7 @@
         .text-glow {
             text-shadow: 0 1px 8px rgba(212, 163, 115, 0.1);
         }
-        
+
         /* 磨砂玻璃質感導航 */
         .frosted-glass {
             background: rgba(252, 251, 247, 0.85);
@@ -94,20 +106,39 @@
             min-height: 100vh;
             min-height: -webkit-fill-available;
         }
+
+        /* prefers-reduced-motion 支援：避免過度動畫 */
+        @media (prefers-reduced-motion: reduce) {
+            .desert-gold-gradient { animation: none !important; background-size: auto !important; }
+            .animate-bounce { animation: none !important; }
+        }
+
+        /* 螢幕閱讀器專用隱藏文字 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border-width: 0;
+        }
     </style>
 </head>
 <body class="text-stone-700 font-serifTC selection:bg-morandi-goldLight selection:text-stone-900 overflow-x-hidden antialiased">
 
     <!-- 頂端導航列 -->
-    <nav class="fixed top-0 left-0 w-full z-50 frosted-glass transition-all duration-300">
+    <nav class="fixed top-0 left-0 w-full z-50 frosted-glass transition-all duration-300" role="navigation" aria-label="主導覽列">
         <div class="max-w-6xl mx-auto px-6 py-4.5 flex items-center justify-between h-16">
             <!-- 品牌 LOGO (改用 Dancing Script 優雅手寫體) -->
             <a href="#home" class="font-script text-2xl md:text-3xl font-medium text-stone-800 hover:opacity-80 transition-opacity">
                 Esther & Rena
             </a>
-            
+
             <!-- 導覽連結 (採用輕盈細緻 Aptos 字體) -->
-            <div class="hidden md:flex items-center gap-9 text-[11px] tracking-[0.25em] font-normal text-stone-500">
+            <div class="hidden md:flex items-center gap-9 text-[11px] tracking-[0.25em] font-normal text-stone-500" aria-hidden="false">
                 <a href="#about" class="hover:text-morandi-goldDark transition-colors duration-300">關於我們 ABOUT US</a>
                 <a href="#details" class="hover:text-morandi-goldDark transition-colors duration-300">婚禮詳情 DETAILS</a>
                 <a href="#transport" class="hover:text-morandi-goldDark transition-colors duration-300">交通指引 TRAFFIC</a>
@@ -115,17 +146,17 @@
             </div>
 
             <!-- 手機版選單開關 -->
-            <button id="mobile-menu-toggle" class="md:hidden text-stone-600 focus:outline-none focus:ring-0" aria-label="Toggle Menu">
-                <i class="fa-solid fa-bars-staggered text-xl"></i>
+            <button id="mobile-menu-toggle" class="md:hidden text-stone-600 focus:outline-none focus:ring-0" aria-label="切換選單" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="fa-solid fa-bars-staggered text-xl" aria-hidden="true"></i>
             </button>
         </div>
 
         <!-- 手機版下拉選單 -->
-        <div id="mobile-menu" class="hidden md:hidden bg-morandi-sand border-t border-morandi-gold/10 px-6 py-4 flex flex-col gap-4 text-xs tracking-[0.2em] font-normal text-stone-600 transition-all duration-300">
-            <a href="#about" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100">關於我們 ABOUT US</a>
-            <a href="#details" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100">婚禮詳情 DETAILS</a>
-            <a href="#transport" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100">交通指引 TRAFFIC</a>
-            <a href="#rsvp" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold">出席回函 RSVP</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-morandi-sand border-t border-morandi-gold/10 px-6 py-4 flex flex-col gap-4 text-xs tracking-[0.2em] font-normal text-stone-600 transition-all duration-300" role="menu" aria-hidden="true">
+            <a href="#about" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">關於我們 ABOUT US</a>
+            <a href="#details" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">婚禮詳情 DETAILS</a>
+            <a href="#transport" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">交通指引 TRAFFIC</a>
+            <a href="#rsvp" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold" role="menuitem">出席回函 RSVP</a>
         </div>
     </nav>
 
@@ -133,7 +164,7 @@
     <header id="home" class="relative min-h-screen-safe flex flex-col justify-center items-center text-center px-4 overflow-hidden">
         <!-- 藝術溫暖柔和漸層底色 -->
         <div class="absolute inset-0 z-0 bg-gradient-to-tr from-[#ede2d5] via-[#faf3ec] to-[#eaf0ed]"></div>
-        
+
         <!-- 背景裝飾格紋 -->
         <div class="absolute inset-0 z-10 opacity-20 pointer-events-none mix-blend-overlay">
             <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none">
@@ -152,7 +183,7 @@
             <span class="font-sansEN text-xs tracking-[0.35em] text-morandi-goldDark/90 uppercase mb-3 text-glow font-light">
                 Just in Love
             </span>
-            
+
             <!-- 新人英文姓名 (改用 Dancing Script 手寫字體，大方優雅) -->
             <h1 class="font-script text-4xl md:text-6xl font-medium text-stone-700 my-4 flex flex-col md:flex-row items-center gap-1 md:gap-5">
                 <span>Esther Wang</span>
@@ -172,31 +203,31 @@
                 <p class="font-sansEN text-[10px] tracking-[0.25em] text-stone-400 uppercase mb-5 font-normal">
                     DISTANCE TO THE COMMENCEMENT
                 </p>
-                
+
                 <!-- 白色微光卡片容器 -->
                 <div class="grid grid-cols-4 gap-3 md:gap-4">
                     <!-- 天 -->
                     <div class="soft-glimmer rounded-xl p-3 md:p-5 flex flex-col items-center justify-center premium-shadow">
                         <!-- 數字採用 Dancing Script 搭配璀璨沙漠金漸層 -->
-                        <span id="countdown-days" class="font-script text-3xl md:text-5xl font-semibold desert-gold-gradient leading-tight">00</span>
+                        <span id="countdown-days" class="font-script text-3xl md:text-5xl font-semibold desert-gold-gradient leading-tight" aria-live="polite">00</span>
                         <div class="w-8 h-[1px] bg-stone-200/50 my-2"></div>
                         <span class="font-sansEN text-[9px] text-stone-400 font-light tracking-wider uppercase">Days</span>
                     </div>
                     <!-- 時 -->
                     <div class="soft-glimmer rounded-xl p-3 md:p-5 flex flex-col items-center justify-center premium-shadow">
-                        <span id="countdown-hours" class="font-script text-3xl md:text-5xl font-semibold desert-gold-gradient leading-tight">00</span>
+                        <span id="countdown-hours" class="font-script text-3xl md:text-5xl font-semibold desert-gold-gradient leading-tight" aria-live="polite">00</span>
                         <div class="w-8 h-[1px] bg-stone-200/50 my-2"></div>
                         <span class="font-sansEN text-[9px] text-stone-400 font-light tracking-wider uppercase">Hours</span>
                     </div>
                     <!-- 分 -->
                     <div class="soft-glimmer rounded-xl p-3 md:p-5 flex flex-col items-center justify-center premium-shadow">
-                        <span id="countdown-mins" class="font-script text-3xl md:text-5xl font-semibold desert-gold-gradient leading-tight">00</span>
+                        <span id="countdown-mins" class="font-script text-3xl md:text-5xl font-semibold desert-gold-gradient leading-tight" aria-live="polite">00</span>
                         <div class="w-8 h-[1px] bg-stone-200/50 my-2"></div>
                         <span class="font-sansEN text-[9px] text-stone-400 font-light tracking-wider uppercase">Mins</span>
                     </div>
                     <!-- 秒 -->
                     <div class="soft-glimmer rounded-xl p-3 md:p-5 flex flex-col items-center justify-center premium-shadow">
-                        <span id="countdown-secs" class="font-script text-3xl md:text-5xl font-semibold desert-gold-gradient leading-tight">00</span>
+                        <span id="countdown-secs" class="font-script text-3xl md:text-5xl font-semibold desert-gold-gradient leading-tight" aria-live="polite">00</span>
                         <div class="w-8 h-[1px] bg-stone-200/50 my-2"></div>
                         <span class="font-sansEN text-[9px] text-stone-400 font-light tracking-wider uppercase">Secs</span>
                     </div>
@@ -204,9 +235,9 @@
             </div>
 
             <!-- 向下箭頭 -->
-            <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-stone-400 hover:text-morandi-goldDark transition-colors duration-300">
+            <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-stone-400 hover:text-morandi-goldDark transition-colors duration-300" aria-label="向下捲動到關於我們">
                 <span class="block font-sansEN text-[9px] tracking-[0.25em] font-light uppercase mb-1">SCROLL DOWN</span>
-                <i class="fa-solid fa-chevron-down animate-bounce text-xs"></i>
+                <i class="fa-solid fa-chevron-down animate-bounce text-xs" aria-hidden="true"></i>
             </a>
         </div>
     </header>
@@ -221,10 +252,10 @@
 
         <div class="bg-white/60 rounded-2xl p-8 md:p-12 border border-morandi-gold/10 premium-shadow text-center relative overflow-hidden">
             <!-- 背景裝飾羽毛 -->
-            <div class="absolute -right-8 -bottom-8 opacity-[0.02] text-stone-900 pointer-events-none">
+            <div class="absolute -right-8 -bottom-8 opacity-[0.02] text-stone-900 pointer-events-none" aria-hidden="true">
                 <i class="fa-solid fa-feather-pointed text-8xl"></i>
             </div>
-            
+
             <!-- 誠摯致詞 -->
             <div class="space-y-6 text-sm md:text-base text-stone-500 leading-relaxed tracking-wider font-light">
                 <p>在茫茫人海中，我們遇見了彼此。</p>
@@ -264,11 +295,11 @@
 
             <!-- 垂直 V-Card 設計 -->
             <div class="space-y-6 max-w-xl mx-auto">
-                
+
                 <!-- 卡片一：婚禮時間 -->
                 <div class="bg-white/80 rounded-xl p-6 md:p-8 border border-morandi-gold/10 premium-shadow flex items-start gap-4 md:gap-6">
                     <div class="w-11 h-11 rounded-xl bg-morandi-goldLight/30 flex items-center justify-center shrink-0">
-                        <i class="fa-regular fa-calendar-check text-morandi-goldDark text-lg"></i>
+                        <i class="fa-regular fa-calendar-check text-morandi-goldDark text-lg" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow space-y-2">
                         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1.5">
@@ -286,14 +317,14 @@
                 <!-- 卡片二：宴席地點 -->
                 <div class="bg-white/80 rounded-xl p-6 md:p-8 border border-morandi-gold/10 premium-shadow flex items-start gap-4 md:gap-6">
                     <div class="w-11 h-11 rounded-xl bg-morandi-goldLight/30 flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-map-location-dot text-morandi-goldDark text-lg"></i>
+                        <i class="fa-solid fa-map-location-dot text-morandi-goldDark text-lg" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow space-y-2">
                         <span class="font-sansEN text-[10px] tracking-wider text-morandi-goldDark uppercase block">LOCATION</span>
                         <h4 class="font-serifTC text-base text-stone-700 font-medium">婚宴舉辦地點</h4>
                         <div class="text-stone-500 text-xs md:text-sm leading-relaxed font-light space-y-1">
                             <p class="font-medium text-stone-600">
-                                <span class="whitespace-nowrap">新天地梧棲創始店</span> 
+                                <span class="whitespace-nowrap">新天地梧棲創始店</span>
                                 <span class="whitespace-nowrap">晶彩廳</span>
                             </p>
                             <p class="text-stone-400 text-xs">
@@ -301,8 +332,8 @@
                             </p>
                         </div>
                         <div class="pt-2">
-                            <a href="https://maps.app.goo.gl/tB378Lp9n5K7wE6v6" target="_blank" class="inline-flex items-center gap-2 text-xs bg-morandi-goldDark hover:bg-morandi-goldDark/95 text-white px-4 py-2.5 rounded-lg transition-all shadow-sm">
-                                <i class="fa-solid fa-location-arrow text-[10px]"></i> 開啟 Google Maps 導航
+                            <a href="https://maps.app.goo.gl/tB378Lp9n5K7wE6v6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs bg-morandi-goldDark hover:bg-morandi-goldDark/95 text-white px-3 py-2 rounded-md">
+                                <i class="fa-solid fa-location-arrow text-[10px]" aria-hidden="true"></i> 開啟 Google Maps 導航
                             </a>
                         </div>
                     </div>
@@ -311,7 +342,7 @@
                 <!-- 卡片三：著裝規範 Dress Code -->
                 <div class="bg-white/80 rounded-xl p-6 md:p-8 border border-morandi-gold/10 premium-shadow flex items-start gap-4 md:gap-6">
                     <div class="w-11 h-11 rounded-xl bg-morandi-goldLight/30 flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-shirt text-morandi-goldDark text-base"></i>
+                        <i class="fa-solid fa-shirt text-morandi-goldDark text-base" aria-hidden="true"></i>
                     </div>
                     <div class="flex-grow space-y-2">
                         <span class="font-sansEN text-[10px] tracking-wider text-morandi-goldDark uppercase block">DRESS CODE</span>
@@ -322,17 +353,17 @@
                         <div class="flex flex-wrap items-center gap-4 pt-1">
                             <!-- 莫蘭迪金 -->
                             <div class="flex items-center gap-2">
-                                <span class="w-5 h-5 rounded-full border border-stone-200 block shadow-sm" style="background-color: #d4a373;"></span>
+                                <span class="w-5 h-5 rounded-full border border-stone-200 block shadow-sm" style="background-color: #d4a373;" aria-hidden="true"></span>
                                 <span class="text-xs text-stone-500">莫蘭迪金色</span>
                             </div>
                             <!-- 莫蘭迪綠 -->
                             <div class="flex items-center gap-2">
-                                <span class="w-5 h-5 rounded-full border border-stone-200 block shadow-sm" style="background-color: #8da399;"></span>
+                                <span class="w-5 h-5 rounded-full border border-stone-200 block shadow-sm" style="background-color: #8da399;" aria-hidden="true"></span>
                                 <span class="text-xs text-stone-500">鼠尾草綠</span>
                             </div>
                             <!-- 大地暖沙色 -->
                             <div class="flex items-center gap-2">
-                                <span class="w-5 h-5 rounded-full border border-stone-200 block shadow-sm" style="background-color: #faedcd;"></span>
+                                <span class="w-5 h-5 rounded-full border border-stone-200 block shadow-sm" style="background-color: #faedcd;" aria-hidden="true"></span>
                                 <span class="text-xs text-stone-500">大地暖沙色</span>
                             </div>
                         </div>
@@ -354,38 +385,38 @@
 
         <!-- 摺疊式面板 Accordion -->
         <div class="space-y-4 max-w-xl mx-auto">
-            
+
             <!-- 手風琴 1: 自行開車前往 -->
             <div class="border border-stone-200/60 rounded-xl bg-white overflow-hidden transition-all duration-300">
-                <button onclick="toggleAccordion(1)" class="w-full flex justify-between items-center p-5 md:p-6 text-left hover:bg-stone-50/50 transition-colors duration-300 focus:outline-none">
+                <button id="accordion-btn-1" onclick="toggleAccordion(1)" class="w-full flex justify-between items-center p-5 md:p-6 text-left hover:bg-stone-50/50 transition-colors duration-300 focus:outline-none" aria-expanded="false" aria-controls="accordion-content-1">
                     <span class="font-serifTC text-stone-700 text-sm md:text-base font-medium flex items-center gap-2">
-                        <i class="fa-solid fa-car text-morandi-goldDark"></i> 自行開車資訊 (Parking & Driving)
+                        <i class="fa-solid fa-car text-morandi-goldDark" aria-hidden="true"></i> 自行開車資訊 (Parking & Driving)
                     </span>
-                    <i id="accordion-icon-1" class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300 text-xs"></i>
+                    <i id="accordion-icon-1" class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300 text-xs" aria-hidden="true"></i>
                 </button>
-                <div id="accordion-content-1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div id="accordion-content-1" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out" role="region" aria-labelledby="accordion-btn-1" aria-hidden="true">
                     <div class="p-5 md:p-6 border-t border-stone-100 bg-stone-50/20 text-xs md:text-sm text-stone-500 space-y-3 font-light leading-relaxed">
                         <p class="font-medium text-stone-600">國道南下 / 北上引導：</p>
-                        <p>國道3號於沙鹿交流道下，朝大雅/沙鹿方向前進，接 <span class="font-normal text-stone-700 whitespace-nowrap">明德路至台10線</span> 進入梧棲區，並轉往 <span class="font-normal text-stone-700 whitespace-nowrap">大智路二段</span>，直行即可到達新天地。</p>
+                        <p>建議使用導航設定「新天地梧棲創始店」，或依照國道3號沙鹿交流道下，沿主要道路前往會館；會場周邊亦有臨時停車區，請依現場保全指示停放。</p>
                         <p class="font-medium text-stone-600 pt-1">專屬停車位資訊：</p>
-                        <p>會館館內設有 <span class="font-normal text-stone-700 whitespace-nowrap">專屬免費停車場</span> 與周邊特約停車位。請依現場保全引導停放，並於入場時告知為婚禮貴賓，即可享有免費停車待遇。</p>
+                        <p>會館館內設有 <span class="font-normal text-stone-700 whitespace-nowrap">專屬免費停車場</span>，若停車場客滿請依現場工作人員引導停放於周邊特約停車處。</p>
                     </div>
                 </div>
             </div>
 
             <!-- 手風琴 2: 大眾運輸交通 (高鐵專屬) -->
             <div class="border border-stone-200/60 rounded-xl bg-white overflow-hidden transition-all duration-300">
-                <button onclick="toggleAccordion(2)" class="w-full flex justify-between items-center p-5 md:p-6 text-left hover:bg-stone-50/50 transition-colors duration-300 focus:outline-none">
+                <button id="accordion-btn-2" onclick="toggleAccordion(2)" class="w-full flex justify-between items-center p-5 md:p-6 text-left hover:bg-stone-50/50 transition-colors duration-300 focus:outline-none" aria-expanded="false" aria-controls="accordion-content-2">
                     <span class="font-serifTC text-stone-700 text-sm md:text-base font-medium flex items-center gap-2">
-                        <i class="fa-solid fa-train text-morandi-goldDark"></i> 搭乘高鐵資訊 (HSR Guide)
+                        <i class="fa-solid fa-train text-morandi-goldDark" aria-hidden="true"></i> 搭乘高鐵資訊 (HSR Guide)
                     </span>
-                    <i id="accordion-icon-2" class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300 text-xs"></i>
+                    <i id="accordion-icon-2" class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300 text-xs" aria-hidden="true"></i>
                 </button>
-                <div id="accordion-content-2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div id="accordion-content-2" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out" role="region" aria-labelledby="accordion-btn-2" aria-hidden="true">
                     <div class="p-5 md:p-6 border-t border-stone-100 bg-stone-50/20 text-xs md:text-sm text-stone-500 space-y-3 font-light leading-relaxed">
                         <div>
                             <p class="font-medium text-stone-600">高鐵台中站出發：</p>
-                            <p class="mt-1">於高鐵台中站搭乘計程車直達 <span class="font-normal text-stone-700 whitespace-nowrap">新天地梧棲創始店</span>（車程約 35-40 分鐘），或自站內轉乘大眾公車抵達梧棲市區會館。</p>
+                            <p class="mt-1">於高鐵台中站下車後，可搭乘計程車直達新天地梧棲創始店（車程約 35–45 分鐘，視交通狀況）。若需包車或接駁安排，請提前聯絡新郎新娘或指定聯絡人。</p>
                         </div>
                     </div>
                 </div>
@@ -393,16 +424,16 @@
 
             <!-- 手風琴 3: 市區公車轉乘 -->
             <div class="border border-stone-200/60 rounded-xl bg-white overflow-hidden transition-all duration-300">
-                <button onclick="toggleAccordion(3)" class="w-full flex justify-between items-center p-5 md:p-6 text-left hover:bg-stone-50/50 transition-colors duration-300 focus:outline-none">
+                <button id="accordion-btn-3" onclick="toggleAccordion(3)" class="w-full flex justify-between items-center p-5 md:p-6 text-left hover:bg-stone-50/50 transition-colors duration-300 focus:outline-none" aria-expanded="false" aria-controls="accordion-content-3">
                     <span class="font-serifTC text-stone-700 text-sm md:text-base font-medium flex items-center gap-2">
-                        <i class="fa-solid fa-bus text-morandi-goldDark"></i> 搭乘市區公車 (Bus Route)
+                        <i class="fa-solid fa-bus text-morandi-goldDark" aria-hidden="true"></i> 搭乘市區公車 (Bus Route)
                     </span>
-                    <i id="accordion-icon-3" class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300 text-xs"></i>
+                    <i id="accordion-icon-3" class="fa-solid fa-chevron-down text-stone-400 transition-transform duration-300 text-xs" aria-hidden="true"></i>
                 </button>
-                <div id="accordion-content-3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div id="accordion-content-3" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out" role="region" aria-labelledby="accordion-btn-3" aria-hidden="true">
                     <div class="p-5 md:p-6 border-t border-stone-100 bg-stone-50/20 text-xs md:text-sm text-stone-500 space-y-3 font-light leading-relaxed">
                         <p class="font-medium text-stone-600">公車搭乘引導：</p>
-                        <p>可搭乘台中市公車 <span class="font-medium text-morandi-goldDark whitespace-nowrap">306</span>、<span class="font-medium text-morandi-goldDark whitespace-nowrap">307</span> 或 <span class="font-medium text-morandi-goldDark whitespace-nowrap">310</span>，至 <span class="font-normal text-stone-700 whitespace-nowrap text-glow">頂寮里站</span> 下車，下車即可抵達 <span class="font-normal text-stone-700 whitespace-nowrap">新天地梧棲創始店</span>。</p>
+                        <p>可搭乘台中市公車（例：306、307）至鄰近站點後步行或轉乘計程車前往會場。建議提前查詢公車班次並預留轉乘時間。</p>
                     </div>
                 </div>
             </div>
@@ -421,16 +452,16 @@
 
             <div class="bg-white/80 rounded-2xl p-8 md:p-12 border border-morandi-gold/10 premium-shadow max-w-xl mx-auto text-center relative overflow-hidden">
                 <!-- 奢華漸層裝飾條 -->
-                <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-morandi-gold via-morandi-green to-morandi-gold"></div>
-                
+                <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-morandi-gold via-morandi-green to-morandi-gold" aria-hidden="true"></div>
+
                 <h4 class="font-serifTC text-base text-stone-700 font-medium mb-3">預先統計出席人數</h4>
                 <p class="text-stone-500 text-xs md:text-sm font-light leading-relaxed mb-6 max-w-xs mx-auto">
                     請點選下方按鈕前往填寫出席意願：
                 </p>
 
                 <!-- 外連至 SurveyCake 的按鈕 -->
-                <a href="https://www.surveycake.com/s/vpkVp" target="_blank" class="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#d4a373] to-[#c29161] text-white px-7 py-3.5 rounded-full text-xs tracking-[0.12em] font-light shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 group">
-                    <i class="fa-solid fa-pen-nib text-[10px] transition-transform group-hover:rotate-12"></i>
+                <a href="https://www.surveycake.com/s/vpkVp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#d4a373] to-[#c29161] text-white px-7 py-3.5 rounded-full text-sm">
+                    <i class="fa-solid fa-pen-nib text-[10px] transition-transform group-hover:rotate-12" aria-hidden="true"></i>
                     填寫婚禮表單 GO TO INVITATION RSVP
                 </a>
 
@@ -449,9 +480,9 @@
                 Esther & Rena
             </h3>
             <p class="font-sansEN italic text-xs tracking-[0.3em] text-morandi-gold/80 font-light uppercase">Just in Love</p>
-            
+
             <div class="w-10 h-[1px] bg-stone-800 mx-auto"></div>
-            
+
             <p class="text-[10px] font-light text-stone-600 tracking-wider leading-relaxed">
                 © 2026 Esther & Rena. All Rights Reserved. <br class="md:hidden">
                 設計與開發 ── 精緻婚禮科技團隊
@@ -461,15 +492,45 @@
 
     <!-- 全網頁互動 JavaScript -->
     <script>
-        /* 手機版導航欄切換 */
-        function toggleMobileMenu() {
+        /* 手機版導航欄切換（包含 ARIA 更新 與 focus 管理） */
+        function toggleMobileMenu(focusFirst = true) {
             const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            const toggleBtn = document.getElementById('mobile-menu-toggle');
+            const isHidden = menu.classList.contains('hidden');
+
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                menu.setAttribute('aria-hidden', 'false');
+                toggleBtn.setAttribute('aria-expanded', 'true');
+                // 把焦點移到第一個選項（便於鍵盤使用者）
+                if (focusFirst) {
+                    const firstItem = menu.querySelector('[role="menuitem"]');
+                    if (firstItem) firstItem.focus();
+                }
+            } else {
+                menu.classList.add('hidden');
+                menu.setAttribute('aria-hidden', 'true');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+                // 關閉時回復焦點給按鈕
+                toggleBtn.focus();
+            }
         }
 
         const menuToggleBtn = document.getElementById('mobile-menu-toggle');
         if (menuToggleBtn) {
-            menuToggleBtn.addEventListener('click', toggleMobileMenu);
+            menuToggleBtn.addEventListener('click', (e) => {
+                toggleMobileMenu();
+            });
+            // 鍵盤支援：Enter / Space 開啟選單，Esc 關閉
+            menuToggleBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                } else if (e.key === 'Escape') {
+                    const menu = document.getElementById('mobile-menu');
+                    if (!menu.classList.contains('hidden')) toggleMobileMenu();
+                }
+            });
         }
 
         /* 倒數計時器邏輯 */
@@ -482,10 +543,10 @@
 
             if (difference < 0) {
                 // 如果已過目標時間
-                document.getElementById('countdown-days').innerText = '00';
-                document.getElementById('countdown-hours').innerText = '00';
-                document.getElementById('countdown-mins').innerText = '00';
-                document.getElementById('countdown-secs').innerText = '00';
+                ['countdown-days','countdown-hours','countdown-mins','countdown-secs'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.innerText = '00';
+                });
                 clearInterval(countdownInterval);
                 return;
             }
@@ -497,45 +558,77 @@
             const secs = Math.floor((difference % (1000 * 60)) / 1000);
 
             // 渲染前補 0
-            document.getElementById('countdown-days').innerText = String(days).padStart(2, '0');
-            document.getElementById('countdown-hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('countdown-mins').innerText = String(mins).padStart(2, '0');
-            document.getElementById('countdown-secs').innerText = String(secs).padStart(2, '0');
+            const pad = (n) => String(n).padStart(2, '0');
+            document.getElementById('countdown-days').innerText = pad(days);
+            document.getElementById('countdown-hours').innerText = pad(hours);
+            document.getElementById('countdown-mins').innerText = pad(mins);
+            document.getElementById('countdown-secs').innerText = pad(secs);
         }
 
         // 啟動計時器
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
 
-        /* 手風琴折疊式面板 Accordion 互動控制 */
+        /* 手風琴折疊式面板 Accordion 互動控制（ARIA + 鍵盤） */
         let activeAccordion = null;
 
-        function toggleAccordion(id) {
+        function setAccordionState(id, expanded) {
+            const btn = document.getElementById(`accordion-btn-${id}`);
             const content = document.getElementById(`accordion-content-${id}`);
             const icon = document.getElementById(`accordion-icon-${id}`);
+            if (!btn || !content) return;
 
-            // 如果點擊了當前展開的面板，則將其收合
-            if (activeAccordion === id) {
-                content.style.maxHeight = null;
-                icon.classList.remove('rotate-180');
-                activeAccordion = null;
-            } else {
-                // 先將當前所有已經展開的面板全部收合
-                for (let i = 1; i <= 3; i++) {
-                    const otherContent = document.getElementById(`accordion-content-${i}`);
-                    const otherIcon = document.getElementById(`accordion-icon-${i}`);
-                    if (otherContent) otherContent.style.maxHeight = null;
-                    if (otherIcon) otherIcon.classList.remove('rotate-180');
-                }
+            btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
 
-                // 展開選中的面板
+            if (expanded) {
                 content.style.maxHeight = content.scrollHeight + "px";
-                icon.classList.add('rotate-180');
-                activeAccordion = id;
+                if (icon) icon.classList.add('rotate-180');
+            } else {
+                content.style.maxHeight = null;
+                if (icon) icon.classList.remove('rotate-180');
             }
         }
 
-        // 初始化：預設展開第一張折疊面板
+        function toggleAccordion(id) {
+            // 如果點擊了當前展開的面板，則將其收合
+            if (activeAccordion === id) {
+                setAccordionState(id, false);
+                activeAccordion = null;
+                return;
+            }
+
+            // 先將當前所有已經展開的面板全部收合
+            for (let i = 1; i <= 3; i++) {
+                setAccordionState(i, false);
+            }
+
+            // 展開選中的面板
+            setAccordionState(id, true);
+            activeAccordion = id;
+            // 將內容區域 focus，以利螢幕閱讀器使用者
+            const content = document.getElementById(`accordion-content-${id}`);
+            if (content) content.querySelector('p, li, a, span')?.focus?.();
+        }
+
+        // 鍵盤事件支援（Enter/Space 開關，Esc 關閉）
+        ['accordion-btn-1','accordion-btn-2','accordion-btn-3'].forEach((id) => {
+            const btn = document.getElementById(id);
+            if (!btn) return;
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const idx = id.split('-').pop();
+                    toggleAccordion(Number(idx));
+                } else if (e.key === 'Escape') {
+                    // 關閉所有
+                    for (let i = 1; i <= 3; i++) setAccordionState(i, false);
+                    activeAccordion = null;
+                }
+            });
+        });
+
+        // 初始化：預設展開第一張折疊面板（於 DOMContentLoaded）
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 toggleAccordion(1);
