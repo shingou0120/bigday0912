@@ -69,10 +69,11 @@
 
             <!-- 導覽連結 (採用輕盈細緻 Aptos 字體) -->
             <div class="hidden md:flex items-center gap-9 text-[11px] tracking-[0.25em] font-normal text-stone-500" aria-hidden="false">
-                <a href="#about" class="hover:text-morandi-goldDark transition-colors duration-300">關於我們 ABOUT US</a>
-                <a href="#details" class="hover:text-morandi-goldDark transition-colors duration-300">婚禮詳情 DETAILS</a>
-                <a href="#transport" class="hover:text-morandi-goldDark transition-colors duration-300">交通指引 TRAFFIC</a>
-                <a href="#rsvp" class="hover:text-morandi-goldDark transition-colors duration-300">出席回函 RSVP</a>
+                <a href="#about" class="hover:text-morandi-goldDark transition-colors duration-300">關於我們 <span class="font-sansEN text-[8px] tracking-[0.1em] uppercase">ABOUT US</span></a>
+                <a href="#albums" class="hover:text-morandi-goldDark transition-colors duration-300">新人剪影 <span class="font-sansEN text-[8px] tracking-[0.1em] uppercase">SILHOUETTE</span></a>
+                <a href="#details" class="hover:text-morandi-goldDark transition-colors duration-300">婚禮詳情 <span class="font-sansEN text-[8px] tracking-[0.1em] uppercase">DETAILS</span></a>
+                <a href="#transport" class="hover:text-morandi-goldDark transition-colors duration-300">交通指引 <span class="font-sansEN text-[8px] tracking-[0.1em] uppercase">TRAFFIC</span></a>
+                <a href="#rsvp" class="hover:text-morandi-goldDark transition-colors duration-300">出席回函 <span class="font-sansEN text-[8px] tracking-[0.1em] uppercase">RSVP</span></a>
             </div>
 
             <!-- 手機版選單開關 -->
@@ -83,10 +84,11 @@
 
         <!-- 手機版下拉選單 -->
         <div id="mobile-menu" class="hidden md:hidden bg-morandi-sand border-t border-morandi-gold/10 px-6 py-4 flex flex-col gap-4 text-xs tracking-[0.2em] font-normal text-stone-600 transition-all duration-300" role="menu" aria-hidden="true">
-            <a href="#about" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">關於我們 ABOUT US</a>
-            <a href="#details" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">婚禮詳情 DETAILS</a>
-            <a href="#transport" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">交通指引 TRAFFIC</a>
-            <a href="#rsvp" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold" role="menuitem">出席回函 RSVP</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">關於我們 <span class="font-sansEN">ABOUT US</span></a>
+            <a href="#albums" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">新人剪影 <span class="font-sansEN">SILHOUETTE</span></a>
+            <a href="#details" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">婚禮詳情 <span class="font-sansEN">DETAILS</span></a>
+            <a href="#transport" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold border-b border-stone-100" role="menuitem">交通指引 <span class="font-sansEN">TRAFFIC</span></a>
+            <a href="#rsvp" onclick="toggleMobileMenu()" class="py-2 hover:text-morandi-gold" role="menuitem">出席回函 <span class="font-sansEN">RSVP</span></a>
         </div>
     </nav>
 
@@ -214,6 +216,73 @@
         </div>
     </section>
 
+
+    <!-- 新人剪影 Section -->
+    <section id="albums" class="py-24 px-6 md:px-12 bg-morandi-sand relative">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="font-sansEN text-[11px] tracking-[0.3em] text-morandi-goldDark font-normal block mb-1">PORTRAIT GALLERY</span>
+                <h3 class="font-serifTC text-xl md:text-2xl font-normal tracking-[0.25em] text-stone-800">新人剪影</h3>
+                <div class="w-8 h-[1px] bg-morandi-gold/40 mx-auto mt-3"></div>
+            </div>
+
+            <!-- 外殼：大圓角矩形 (Large Rounded Rectangle) -->
+            <div class="bg-white/60 rounded-3xl p-6 md:p-10 border border-morandi-gold/10 premium-shadow">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+                    
+                    <!-- 左相簿：登記那天 (圓角正方形) -->
+                    <div onclick="openAlbum('registration')" class="group cursor-pointer flex flex-col items-center">
+                        <div class="w-full aspect-square relative rounded-2xl overflow-hidden shadow-md border border-stone-100 bg-stone-100 transition-all duration-500">
+                            <!-- 預覽封面照 (路徑使用 /pic/) 附帶美觀 Unsplash Fallback 確保預覽體驗 -->
+                            <img src="./pic/preview/20250714L-89.jpg" 
+                                 onerror="this.onerror=null; this.src=\'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000\';" 
+                                 alt="登記那天" 
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            
+                            <!-- 霧化薄霧遮罩特效 (Hover時照片變淺) -->
+                            <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-white/40 transition-all duration-300 flex flex-col items-center justify-center">
+                                <!-- 3D立體字特效 -->
+                                <div class="text-center px-4">
+                                    <span class="font-script text-3xl md:text-4xl text-white group-hover:text-morandi-goldDark group-hover:text-3d-glow block font-semibold drop-shadow-md">
+                                        Registration Day
+                                    </span>
+                                    <span class="font-serifTC text-sm tracking-[0.2em] text-white group-hover:text-stone-800 group-hover:text-3d-glow block mt-2 font-medium drop-shadow">
+                                        登記那天
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右相簿：浪漫婚紗 (圓角正方形) -->
+                    <div onclick="openAlbum('wedding')" class="group cursor-pointer flex flex-col items-center">
+                        <div class="w-full aspect-square relative rounded-2xl overflow-hidden shadow-md border border-stone-100 bg-stone-100 transition-all duration-500">
+                            <!-- 預覽封面照 (路徑使用 /pic/) 附帶美觀 Unsplash Fallback -->
+                            <img src="./pic/preview/20250714L-317.jpg" 
+                                 onerror="this.onerror=null; this.src=\'https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=1000\';" 
+                                 alt="浪漫婚紗" 
+                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            
+                            <!-- 霧化薄霧遮罩特效 (Hover時照片變淺) -->
+                            <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-white/40 transition-all duration-300 flex flex-col items-center justify-center">
+                                <!-- 3D立體字特效 -->
+                                <div class="text-center px-4">
+                                    <span class="font-script text-3xl md:text-4xl text-white group-hover:text-morandi-goldDark group-hover:text-3d-glow block font-semibold drop-shadow-md">
+                                        Wedding Portrait
+                                    </span>
+                                    <span class="font-serifTC text-sm tracking-[0.2em] text-white group-hover:text-stone-800 group-hover:text-3d-glow block mt-2 font-medium drop-shadow">
+                                        浪漫婚紗
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- 婚禮詳情 Section -->
     <section id="details" class="py-24 px-6 md:px-12 bg-[#f4ece1]/20 relative">
         <div class="max-w-3xl mx-auto">

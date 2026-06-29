@@ -125,3 +125,97 @@ window.addEventListener('DOMContentLoaded', () => {
         toggleAccordion(1);
     }, 300);
 });
+
+/* 相簿燈箱功能 */
+const albumsData = {
+    "登記那天": [
+        "./pic/preview/20250714L-317.jpg",
+        "./pic/preview/20250714L-89.jpg"
+    ],
+    "浪漫婚紗": [
+        "./pic/preview/20250714L-317.jpg",
+        "./pic/preview/20250714L-89.jpg"
+    ]
+}; // 實際圖片路徑請替換
+
+let currentAlbumPhotos = [];
+let currentPhotoIndex = 0;
+
+function openLightbox(albumName) {
+    currentAlbumPhotos = albumsData[albumName];
+    currentPhotoIndex = 0;
+
+    const lightboxOverlay = document.createElement("div");
+    lightboxOverlay.classList.add("lightbox-overlay");
+    lightboxOverlay.innerHTML = `
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image">
+            <button class="lightbox-nav prev"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="lightbox-nav next"><i class="fa-solid fa-chevron-right"></i></button>
+            <span class="lightbox-counter"></span>
+            <button class="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    `;
+    document.body.appendChild(lightboxOverlay);
+
+    const lightboxImage = lightboxOverlay.querySelector(".lightbox-image");
+    const lightboxCounter = lightboxOverlay.querySelector(".lightbox-counter");
+    const prevBtn = lightboxOverlay.querySelector(".lightbox-nav.prev");
+    const nextBtn = lightboxOverlay.querySelector(".lightbox-nav.next");
+    const closeBtn = lightboxOverlay.querySelector(".lightbox-close");
+
+    function updateLightboxImage() {
+        lightboxImage.src = currentAlbumPhotos[currentPhotoIndex];
+        lightboxCounter.textContent = `${currentPhotoIndex + 1}/${currentAlbumPhotos.length}`;
+    }
+
+    updateLightboxImage();
+
+    prevBtn.onclick = () => {
+        currentPhotoIndex = (currentPhotoIndex - 1 + currentAlbumPhotos.length) % currentAlbumPhotos.length;
+        updateLightboxImage();
+    };
+
+    nextBtn.onclick = () => {
+        currentPhotoIndex = (currentPhotoIndex + 1) % currentAlbumPhotos.length;
+        updateLightboxImage();
+    };
+
+    function closeLightbox() {
+        lightboxOverlay.classList.remove("active");
+        lightboxOverlay.addEventListener("transitionend", () => {
+            lightboxOverlay.remove();
+        }, { once: true });
+    }
+
+    closeBtn.onclick = closeLightbox;
+    lightboxOverlay.addEventListener("click", (e) => {
+        if (e.target === lightboxOverlay) {
+            closeLightbox();
+        }
+    });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            closeLightbox();
+        } else if (e.key === "ArrowLeft") {
+            prevBtn.click();
+        } else if (e.key === "ArrowRight") {
+            nextBtn.click();
+        }
+    }, { once: true }); // Ensure this only runs once
+
+    setTimeout(() => { // Delay adding active class to allow transition
+        lightboxOverlay.classList.add("active");
+    }, 10);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("#albums .group").forEach(albumLink => {
+        albumLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            const albumName = albumLink.querySelector("h4").textContent;
+            openLightbox(albumName);
+        });
+    });
+});
+
