@@ -128,21 +128,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* 相簿燈箱功能 */
 const albumsData = {
-    "登記那天": [
-        "./pic/preview/20250714L-317.jpg",
-        "./pic/preview/20250714L-89.jpg"
+    "registration": [
+        "./pic/preview/20250714L-317.webp", 
+        "./pic/preview/20250714L-89.webp"
     ],
-    "浪漫婚紗": [
-        "./pic/preview/20250714L-317.jpg",
-        "./pic/preview/20250714L-89.jpg"
+    "wedding": [
+        "./pic/potrait/67261481.webp",
+        "./pic/potrait/67261490.webp",
+        "./pic/potrait/67261527.webp",
+        "./pic/potrait/67261535.webp", 
+        "./pic/potrait/67261554.webp",
+        "./pic/potrait/67261649.webp",
+        "./pic/potrait/67261650.webp",
+        "./pic/potrait/67261661.webp",
+        "./pic/potrait/67261714.webp",
+        "./pic/potrait/67261773.webp"
     ]
-}; // 實際圖片路徑請替換
+}; 
 
 let currentAlbumPhotos = [];
 let currentPhotoIndex = 0;
 
-function openLightbox(albumName) {
-    currentAlbumPhotos = albumsData[albumName];
+function openAlbum(albumKey) {
+    currentAlbumPhotos = albumsData[albumKey];
+    if (!currentAlbumPhotos) return;
     currentPhotoIndex = 0;
 
     const lightboxOverlay = document.createElement("div");
@@ -171,12 +180,14 @@ function openLightbox(albumName) {
 
     updateLightboxImage();
 
-    prevBtn.onclick = () => {
+    prevBtn.onclick = (e) => {
+        e.stopPropagation();
         currentPhotoIndex = (currentPhotoIndex - 1 + currentAlbumPhotos.length) % currentAlbumPhotos.length;
         updateLightboxImage();
     };
 
-    nextBtn.onclick = () => {
+    nextBtn.onclick = (e) => {
+        e.stopPropagation();
         currentPhotoIndex = (currentPhotoIndex + 1) % currentAlbumPhotos.length;
         updateLightboxImage();
     };
@@ -188,12 +199,17 @@ function openLightbox(albumName) {
         }, { once: true });
     }
 
-    closeBtn.onclick = closeLightbox;
+    closeBtn.onclick = (e) => {
+        e.stopPropagation();
+        closeLightbox();
+    };
+    
     lightboxOverlay.addEventListener("click", (e) => {
         if (e.target === lightboxOverlay) {
             closeLightbox();
         }
     });
+
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
             closeLightbox();
@@ -202,20 +218,10 @@ function openLightbox(albumName) {
         } else if (e.key === "ArrowRight") {
             nextBtn.click();
         }
-    }, { once: true }); // Ensure this only runs once
+    }, { once: true }); 
 
-    setTimeout(() => { // Delay adding active class to allow transition
+    setTimeout(() => { 
         lightboxOverlay.classList.add("active");
     }, 10);
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("#albums .group").forEach(albumLink => {
-        albumLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            const albumName = albumLink.querySelector("h4").textContent;
-            openLightbox(albumName);
-        });
-    });
-});
 
