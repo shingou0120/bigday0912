@@ -93,28 +93,34 @@
     </nav>
 
     <!-- 封面區塊 (全螢幕封面背景) -->
-    <header id="home" class="relative min-h-screen-safe flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-        <!-- 藝術溫暖柔和漸層底色 -->
-        <div class="absolute inset-0 z-0 bg-gradient-to-tr from-[#ede2d5] via-[#faf3ec] to-[#eaf0ed]"></div>
+            <header id="home" class="relative min-h-screen-safe flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+                <!-- 藝術溫暖柔和漸層底色 -->
+                <div class="absolute inset-0 z-0 bg-gradient-to-tr from-[#ede2d5] via-[#faf3ec] to-[#eaf0ed]"></div>
 
-        <!-- 背景裝飾格紋 -->
-        <div class="absolute inset-0 z-10 opacity-20 pointer-events-none mix-blend-overlay">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none">
-                <defs>
-                    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-                        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#d4a373" stroke-width="0.5" opacity="0.3"/>
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-        </div>
+                <!-- 背景裝飾格紋 -->
+                <div class="absolute inset-0 z-10 opacity-20 pointer-events-none mix-blend-overlay">
+                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none">
+                        <defs>
+                            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#d4a373" stroke-width="0.5" opacity="0.3"/>
+                            </pattern>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#grid)" />
+                    </svg>
+                </div>
 
-        <!-- 封面主體內容 -->
-        <div class="relative z-20 max-w-3xl mx-auto flex flex-col items-center px-4 pt-12">
-            <!-- 暖心標語 (Aptos字型，高質感輕量化) -->
-            <span class="font-sansEN text-xs tracking-[0.35em] text-morandi-goldDark/90 uppercase mb-3 text-glow font-light">
-                Just in Love
-            </span>
+                <!-- 背景圖，使用 WebP 壓縮後的圖片 -->
+                <img src="./pic/preview/67261542.webp" 
+                     onerror="this.onerror=null; this.src=\'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000\';" 
+                     alt="婚禮封面背景" 
+                     class="absolute inset-0 w-full h-full object-cover z-0 opacity-50">
+
+                <!-- 封面主體內容 -->
+                <div class="relative z-20 max-w-3xl mx-auto flex flex-col items-center px-4 pt-12">
+                    <!-- 暖心標語 (Aptos字型，高質感輕量化) -->
+                    <span class="font-sansEN text-xs tracking-[0.35em] text-morandi-goldDark/90 uppercase mb-3 text-glow font-light">
+                        Just in Love
+                    </span>
 
             <!-- 新人英文姓名 (改用 Dancing Script 手寫字體，大方優雅) -->
             <h1 class="font-script text-4xl md:text-6xl font-medium text-stone-700 my-4 flex flex-col md:flex-row items-center gap-1 md:gap-5">
@@ -234,7 +240,7 @@
                     <div onclick="openAlbum('registration')" class="group cursor-pointer flex flex-col items-center">
                         <div class="w-full aspect-square relative rounded-2xl overflow-hidden shadow-md border border-stone-100 bg-stone-100 transition-all duration-500">
                             <!-- 預覽封面照 (路徑使用 /pic/) 附帶美觀 Unsplash Fallback 確保預覽體驗 -->
-                            <img src="./pic/preview/20250714L-89.jpg" 
+                            <img src="./pic/registration/20250714L-89.webp" 
                                  onerror="this.onerror=null; this.src=\'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000\';" 
                                  alt="登記那天" 
                                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
