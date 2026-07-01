@@ -129,6 +129,11 @@ window.addEventListener('DOMContentLoaded', () => {
 /* 相簿燈箱功能 */
 const albumsData = {
     "registration": [
+        "./pic/registration/20250714S-7.webp",
+        "./pic/registration/20250714S-61.webp",
+        "./pic/registration/20250714S-62.webp",
+        "./pic/registration/20250714S-87.webp",
+        "./pic/registration/20250714S-24.webp",
         "./pic/registration/20250714S-106.webp",
         "./pic/registration/20250714S-114.webp",
         "./pic/registration/20250714S-115.webp",
@@ -138,13 +143,9 @@ const albumsData = {
         "./pic/registration/20250714S-180.webp",
         "./pic/registration/20250714S-181.webp",
         "./pic/registration/20250714S-182.webp",
-        "./pic/registration/20250714S-24.webp",
         "./pic/registration/20250714S-318.webp",
-        "./pic/registration/20250714S-539.webp",
-        "./pic/registration/20250714S-61.webp",
-        "./pic/registration/20250714S-62.webp",
-        "./pic/registration/20250714S-7.webp",
-        "./pic/registration/20250714S-87.webp"
+        "./pic/registration/20250714S-539.webp"
+        
     ],
     "wedding": [
         "./pic/potrait/67261481.webp",
